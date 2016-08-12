@@ -1,17 +1,18 @@
 <div class="index_detial">
 	<div class="content_detial">
 		<p class="big_img">
-			<img ng-src=''/>
+			<img ng-src='{{mesgs.list.imgurl}}'/>
 		</p>
 		<div class="text">
-			<h3>希拉里大投奥运广告造势 川晋按兵不动是闹哪样？</h3>
+			<h3>{{mesgs.list.title}}</h3>
 			<p>
-				<span>08-09 23:28</span>
-				<span>体坛+原创</span>
+				<span>{{mesgs.list.newstime|date:'MM:dd h:mm'}}</span>
+				<span>{{mesgs.list.columns}}</span>
 			</p>
 			<p class="author">
-				<img /><span>陈硕科</span> 体坛+意甲、国际足球记者<span><img src=""/></span>
+				<img src="{{mesgs.list.authorHeadImage}}"/><span>{{mesgs.list.authorName}} </span>{{mesgs.list.autohrDescription}}<span></span>
 			</p>
 		</div>
+		<div id="discrip"></div>
 	</div>
 </div>

@@ -26,19 +26,20 @@ app.config(function($routeProvider) {
 });
 //导航页面控制器
 app.controller('navCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+	$rootScope.menu = true;
 	$http.jsonp('http://127.0.0.1:8888/nav?&callback=JSON_CALLBACK').success(function(data) {
 		console.log('请求成功');
 		console.log(data);
 		$scope.mesgs = data;
 	})
 
-	$rootScope.fnck = function(e) {
-		//this.style.color='red';
-		console.log(e.target);
-		angular.element(e.target).parent().parent().children().children().removeClass('nav_active');
-		angular.element(e.target).addClass("nav_active");
-
-	}
+	//	$rootScope.fnck = function(e) {
+	//		//this.style.color='red';
+	//		console.log(e.target);
+	//		angular.element(e.target).parent().parent().children().children().removeClass('nav_active');
+	//		angular.element(e.target).addClass("nav_active");
+	//
+	//	}
 }]);
 //导航组件化
 //组件的应用，在组件中操作DOM
@@ -96,23 +97,26 @@ app.controller('indexCtrl', ['$scope', '$http', function($scope, $http) {
 		})
 	}])
 	//最新页控制器，轮播图
-app.controller('page02Ctrl', ['$scope', '$http', function($scope, $http) {
+app.controller('page02Ctrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 		$http.jsonp('http://127.0.0.1:8888/page02?&callback=JSON_CALLBACK').success(function(data) {
 				console.log('请求成功第二个页面');
 				console.log(data.datas);
 				$scope.mesgs = data.datas;
-			})
+				//控制菜单的显示隐藏
 			//swiper提供的js一定要写在这个控制器里
-		var swiper = new Swiper('.swiper-container', {
-			pagination: '.swiper-pagination',
-			nextButton: '.swiper-button-next',
-			prevButton: '.swiper-button-prev',
-			paginationClickable: true,
-			spaceBetween: 30,
-			centeredSlides: true,
-			autoplay: 2500,
-			autoplayDisableOnInteraction: false
-		});
+				var swiper = new Swiper('.swiper-container', {
+					pagination: '.swiper-pagination',
+					nextButton: '.swiper-button-next',
+					prevButton: '.swiper-button-prev',
+					paginationClickable: true,
+					spaceBetween: 30,
+					centeredSlides: true,
+					autoplay: 2500,
+					autoplayDisableOnInteraction: false
+				});
+			})
+			//控制菜单的显示隐藏
+			//swiper提供的js一定要写在这个控制器里
 	}])
 	//  最新页控制器,轮播下方列表部分
 app.controller('page02_detil_Ctrl', ['$scope', '$http', function($scope, $http) {
@@ -150,15 +154,17 @@ app.controller('basketballCtrl', ["$scope", '$http', function($scope, $http) {
 
 //首页详情页面控制器
 app.controller('detial_indexCtrl', ["$scope", "$routeParams", '$http', function($scope, $routeParams, $http) {
-//	alert('进入详情页的控制器');
+	//	alert('进入详情页的控制器');
 	$http.jsonp('http://127.0.0.1:8888/page01?&callback=JSON_CALLBACK').success(function(data) {
 		console.log('请求成功');
 		console.log(data.datas);
 		var detialurl = data.datas[$routeParams.id].detailurl;
-		$http.jsonp('http://127.0.0.1:8888/detial_index?&callback=JSON_CALLBACK&bianlian='+detialurl).success(function(data) {
-//		console.log('请求成功第1个页面的详情页');
-		console.log(data);
-		$scope.mesgs = data;
-	})
+		$http.jsonp('http://127.0.0.1:8888/detial_index?&callback=JSON_CALLBACK&bianlian=' + detialurl).success(function(data) {
+			//		console.log('请求成功第1个页面的详情页');
+			console.log(data);
+			$scope.mesgs = data;
+			var discrip = document.getElementById('discrip');
+			discrip.innerHTML = $scope.mesgs.detail[3].content;
+		})
 	})
 }])

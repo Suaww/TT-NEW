@@ -1,0 +1,89 @@
+<section id="shouYe">
+	<!--第一块-->
+	<div class="kuai">
+		<ul id="page01">
+			<li ng-repeat='mesg in mesgs'>
+				<!--详情跳转路由-->
+				<a href="#/detial_index/{{$index}}">
+					<p class="p1">
+						<img ng-src="{{mesg.imgurl}}" />
+						<span><img ng-src="{{mesg.authorHeadImage}}" alt="头像"/></span>
+					</p>
+					<p class="date">
+						<span>{{mesg.newstime|date:'MM:dd h:mm'}}</span>
+						<span>{{mesg.authorName}}</span>
+					</p>
+					<h3>
+							{{mesg.title}}
+							<span><i><img src="img/pinlun.png"/></i>{{mesg.authorAuthentication}}</span>
+					</h3>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!--第一块结束-->
+	
+	<!--第二块-->
+	<!--<div class="kuai">
+		<div id="page2" ng-controller='page02Ctrl'>-->
+			<!--//swipper-->
+			<!--<div class="swiper-container swiper-container-horizontal">
+				<div class="swiper-wrapper" style="transform: translate3d(-5240px, 0px, 0px); transition-duration: 0ms;">
+					<div class="swiper-slide"">
+						<img  ng-src="{{mesgs[0].imgurl}}"/>
+						<p class="p1"></p>
+						<p class="p2">{{mesgs[0].shorttitle}}</p>
+					</div>
+					<div class="swiper-slide">
+						<img  ng-src="{{mesgs[1].imgurl}}"/>
+						<p class="p1"></p>
+						<p class="p2">{{mesgs[1].shorttitle}}</p>
+					</div>
+					<div class="swiper-slide">
+						<img  ng-src="{{mesgs[2].imgurl}}"/>
+						<p class="p1"></p>
+						<p class="p2">{{mesgs[2].shorttitle}}</p>
+					</div>
+					<div class="swiper-slide">
+						<img  ng-src="{{mesgs[3].imgurl}}"/>
+						<p class="p1"></p>
+						<p class="p2">{{mesgs[3].shorttitle}}</p>
+					</div>
+					<div class="swiper-slide">
+						<img  ng-src="{{mesgs[4].imgurl}}"/>
+						<p class="p1"></p>
+						<p class="p2">{{mesgs[4].shorttitle}}</p>
+					</div>
+				</div>
+				<!-- Add Pagination -->
+				<!--<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+					<span class="swiper-pagination-bullet"></span>
+					<span class="swiper-pagination-bullet"></span>
+					<span class="swiper-pagination-bullet"></span>
+					<span class="swiper-pagination-bullet"></span>
+					<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+				</div>-->
+				<!-- Add Arrows -->
+			<!--</div>-->
+			<!--//swipper-->
+			<!--<ul class="list" ng-controller='page02_detil_Ctrl'>
+				<li ng-repeat='mesg in mesgs'>
+					<p class="p_img">
+						<img ng-src='{{mesg.imgurl}}'/>
+					</p>
+					<div class="right_text">
+						<h3>{{mesg.shorttitle}}</h3>
+						<p>
+							{{mesg.summary}}
+							<span><i><img src="img/pinlun.png"/></i>{{mesg.commentnum}}</span>
+						</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>-->
+</section>
+<script>
+	var oSection = document.getElementById('shouYe');
+	console.log(oSection);
+</script>

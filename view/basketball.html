@@ -1,0 +1,14 @@
+<ul class="list">
+	<li ng-repeat='mesg in mesgs'>
+		<p class="p_img">
+			<img ng-src='{{mesg.imgurl}}'/>
+		</p>
+		<div class="right_text">
+			<h3>{{mesg.shorttitle}}</h3>
+			<p>
+				{{mesg.summary}}
+				<span><i><img src="img/pinlun.png"/></i>{{mesg.commentnum}}</span>
+			</p>
+		</div>
+	</li>
+</ul>

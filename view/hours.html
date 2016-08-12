@@ -1,0 +1,20 @@
+<div id="hours">
+	<span>08-11</span>
+	<ul>
+		<li ng-repeat='mesg in mesgs'>
+			<div class="borders">
+				<p>
+					{{mesg.shorttitle}}
+					<span></span>
+					<span>{{mesg.newstime|date:'HH:mm'}}</span>
+				</p>
+				<p>
+					国米4000万欧求购葡萄牙国脚国米4000万欧求购葡萄牙国脚国米4000万欧求购葡萄牙国脚国米4000万欧求购葡萄牙国脚
+				</p>
+				<p ng-if="mesg.img" class="youTu">
+					<img  ng-src="{{mesg.img[0].imgurl}}"/>
+				</p>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,338 @@
+@charset "UTF-8";
+/*重置样式*/
+body,
+img,
+ul,
+li,
+ol,
+dl,
+img,
+form,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0; }
+
+body,
+html {
+  height: 100%; }
+
+li {
+  list-style: none; }
+
+a {
+  text-decoration: none;
+  color: #000000; }
+
+html {
+  font-size: 62.5%;
+  font-family: 'sans-serif'; }
+
+/*首页固定顶部样式开始*/
+#fixed_top_box {
+  height: 13%;
+  background: #ffffff; }
+
+#fixed_top {
+  position: fixed;
+  height: 13%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background: #ffffff; }
+
+header {
+  padding-left: 3%;
+  padding-top: 2%;
+  overflow: hidden;
+  padding-bottom: 2%; }
+  header div {
+    float: left;
+    width: 33.33%;
+    text-align: left; }
+    header div img {
+      width: 25px;
+      display: block; }
+  header div.img01 {
+    text-align: center; }
+    header div.img01 img {
+      width: 50px;
+      padding-top: 5px; }
+  header div.img02 {
+    text-align: right;
+    width: 30.33%;
+    padding-right: 3%; }
+    header div.img02 img {
+      float: right; }
+
+/*首页固定顶部，导航部分样式开始*/
+nav {
+  overflow: hidden; }
+  nav #a_box {
+    padding-top: 2%;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 0.03125rem solid #DCDCDC;
+    border-bottom: 0.03125rem solid #DCDCDC; }
+    nav #a_box a {
+      display: inline-block;
+      float: left;
+      padding: 1% 4%;
+      font-size: 1.8rem; }
+
+.nav_active {
+  color: #c14545; }
+
+/*路由页面样式开始*/
+section {
+  padding-bottom: 20%;
+  position: relative;
+  /*第一个路由页面开始*/
+  /*第二个路由页面开始*/ }
+  section #page01 {
+    width: 100%; }
+    section #page01 li .p1 {
+      width: 100%;
+      position: relative; }
+      section #page01 li .p1 img {
+        width: 100%; }
+      section #page01 li .p1 span {
+        display: inline-block;
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        position: absolute;
+        right: 0.5rem;
+        bottom: -1.2rem; }
+        section #page01 li .p1 span img {
+          height: 2.5rem;
+          width: 2.5rem;
+          border-radius: 50%; }
+    section #page01 li .date {
+      padding: 0.5rem;
+      position: relative;
+      color: #666; }
+      section #page01 li .date span:nth-of-type(2) {
+        position: absolute;
+        right: 3rem; }
+    section #page01 li h3 {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      font-size: 1.5rem; }
+      section #page01 li h3 span {
+        float: right;
+        color: #888888;
+        font-weight: normal;
+        margin-top: 0.3rem; }
+        section #page01 li h3 span i {
+          height: 1rem;
+          width: 1.5rem;
+          margin-right: 0.3rem; }
+          section #page01 li h3 span i img {
+            width: 1.5rem;
+            height: 1rem; }
+  section #page2 {
+    width: 100%; }
+    section #page2 .swiper-container {
+      width: 100%; }
+    section #page2 .swiper-slide {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center; }
+      section #page2 .swiper-slide img {
+        width: 100%;
+        height: auto; }
+      section #page2 .swiper-slide .p1 {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 20%;
+        background: #000000;
+        opacity: 0.5;
+        width: 100%;
+        z-index: 0; }
+      section #page2 .swiper-slide .p2 {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        height: 19%;
+        padding-top: 1%;
+        z-index: 1;
+        color: #FFFFFF;
+        font-size: 1.5rem;
+        text-align: center; }
+    section #page2 .list {
+      padding-bottom: 0; }
+
+/*第三个路由页面开始*/
+#hours {
+  height: 96%;
+  padding-top: 4%;
+  padding-bottom: 18%;
+  position: relative; }
+  #hours span:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    width: 12%;
+    height: auto;
+    background: darkslateblue;
+    color: #FFFFFF;
+    font-size: 0.1rem;
+    text-align: center; }
+  #hours ul {
+    height: 100%;
+    width: 88%;
+    padding-left: 12%; }
+    #hours ul li {
+      width: 95%;
+      border-left: 0.03rem solid #DCDCDC;
+      padding-top: 2%;
+      padding-left: 2%;
+      padding-right: 3%;
+      padding-bottom: 2%; }
+      #hours ul li .borders {
+        border-bottom: 0.01rem solid #bbbbbb; }
+      #hours ul li p:nth-of-type(1) {
+        font-size: 1.3rem;
+        color: darkslateblue;
+        position: relative; }
+        #hours ul li p:nth-of-type(1) span:nth-of-type(1) {
+          display: block;
+          height: 0.4rem;
+          width: 0.4rem;
+          border-radius: 50%;
+          border: solid 0.2rem darkslateblue;
+          position: absolute;
+          left: -0.9rem;
+          top: 0.3rem;
+          background: cornflowerblue; }
+        #hours ul li p:nth-of-type(1) span:nth-of-type(2) {
+          position: absolute;
+          left: -3.5rem;
+          top: 0.1rem;
+          font-size: 0.1rem; }
+      #hours ul li p:nth-of-type(2) {
+        font-size: 1rem;
+        padding-top: 0.5rem;
+        line-height: 1.3rem;
+        color: #aaaaaa;
+        padding-bottom: 0.5rem; }
+      #hours ul li p:nth-of-type(3) img {
+        width: 60%;
+        padding-bottom: 1%; }
+
+/*第四个路由页面样式,第二个和第五个页面通用的样式*/
+.list {
+  padding-bottom: 60px; }
+  .list li {
+    width: 100%;
+    height: 60px;
+    padding: 1rem;
+    border-bottom: 0.03125rem solid #DCDCDC; }
+    .list li .p_img {
+      height: 100%;
+      width: 90px;
+      float: left;
+      background: greenyellow; }
+      .list li .p_img img {
+        width: 100%;
+        height: 100%; }
+    .list li .right_text {
+      float: left;
+      width: 67%;
+      padding-left: 1%; }
+      .list li .right_text h3 {
+        line-height: 1.8rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: "arial, helvetica, sans-serif";
+        font-size: 1.5rem; }
+      .list li .right_text p {
+        line-height: 1.5rem;
+        color: #666666; }
+        .list li .right_text p span {
+          float: right;
+          display: block; }
+          .list li .right_text p span i {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.3rem; }
+            .list li .right_text p span i img {
+              width: 100%;
+              height: 100%; }
+
+/*第一个路由的详情页路由页面样式*/
+.index_detial .content_detial .big_img {
+  width: 100%;
+  height: 250px;
+  background: red; }
+.index_detial .content_detial .text {
+  padding: 0 1rem; }
+  .index_detial .content_detial .text h3 {
+    font-size: 2rem;
+    line-height: 2.3rem;
+    padding-top: 0.5rem; }
+  .index_detial .content_detial .text p:nth-of-type(1) {
+    color: #666666;
+    padding-top: 0.2rem;
+    padding-bottom: 0.5rem; }
+  .index_detial .content_detial .text p:nth-of-type(2) {
+    color: #666666;
+    border-top: dashed #666666 0.1rem;
+    border-bottom: dashed #666666 0.1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem; }
+    .index_detial .content_detial .text p:nth-of-type(2) span:nth-of-type(1) {
+      color: midnightblue; }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7%;
+  padding-top: 0.6rem;
+  padding-bottom: 0.2rem;
+  background: #ffffff;
+  z-index: 2; }
+  footer ul li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    font-size: 1rem;
+    color: #888888; }
+    footer ul li img {
+      width: 1.8rem;
+      height: 2rem; }
+  footer ul li:nth-of-type(3) img {
+    height: 3rem;
+    width: 3rem; }
+
+/*# sourceMappingURL=index.css.map */

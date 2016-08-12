@@ -1,0 +1,57 @@
+<section class="kuai">
+	<div id="page2" ng-controller='page02Ctrl'>
+		<!--//swipper-->
+		<div class="swiper-container swiper-container-horizontal">
+			<div class="swiper-wrapper" style="transform: translate3d(-5240px, 0px, 0px); transition-duration: 0ms;">
+				<div class="swiper-slide"">
+					<img  ng-src="{{mesgs[0].imgurl}}"/>
+					<p class="p1"></p>
+					<p class="p2">{{mesgs[0].shorttitle}}</p>
+				</div>
+				<div class="swiper-slide">
+					<img  ng-src="{{mesgs[1].imgurl}}"/>
+					<p class="p1"></p>
+					<p class="p2">{{mesgs[1].shorttitle}}</p>
+				</div>
+				<div class="swiper-slide">
+					<img  ng-src="{{mesgs[2].imgurl}}"/>
+					<p class="p1"></p>
+					<p class="p2">{{mesgs[2].shorttitle}}</p>
+				</div>
+				<div class="swiper-slide">
+					<img  ng-src="{{mesgs[3].imgurl}}"/>
+					<p class="p1"></p>
+					<p class="p2">{{mesgs[3].shorttitle}}</p>
+				</div>
+				<div class="swiper-slide">
+					<img  ng-src="{{mesgs[4].imgurl}}"/>
+					<p class="p1"></p>
+					<p class="p2">{{mesgs[4].shorttitle}}</p>
+				</div>
+			</div>
+		<!-- Add Pagination -->
+			<div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets">
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet"></span>
+				<span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+			</div>
+		</div>
+		<!--//swipper-->
+		<ul class="list" ng-controller='page02_detil_Ctrl'>
+			<li ng-repeat='mesg in mesgs'>
+				<p class="p_img">
+					<img ng-src='{{mesg.imgurl}}'/>
+				</p>
+				<div class="right_text">
+					<h3>{{mesg.shorttitle}}</h3>
+					<p>
+						{{mesg.summary}}
+						<span><i><img src="img/pinlun.png"/></i>{{mesg.commentnum}}</span>
+					</p>
+				</div>
+			</li>
+		</ul>
+	</div>
+</section>

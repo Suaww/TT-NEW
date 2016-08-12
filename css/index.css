@@ -337,6 +337,150 @@ section {
     font-size: 1.5rem;
     padding: 1rem 0.5rem; }
 
+/*个人中心页路由页面样式*/
+#mine_page div:nth-of-type(1) {
+  width: 100%;
+  height: 13rem;
+  background: red;
+  padding-top: 2rem;
+  position: relative; }
+  #mine_page div:nth-of-type(1) p:nth-of-type(1) {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    background: greenyellow;
+    position: absolute;
+    left: 50%;
+    margin-left: -2rem; }
+  #mine_page div:nth-of-type(1) p:nth-of-type(2) {
+    position: absolute;
+    top: 6.3rem;
+    width: 100%;
+    text-align: center;
+    font-size: 1.3rem;
+    font-family: "microsoft yahei"; }
+    #mine_page div:nth-of-type(1) p:nth-of-type(2) a {
+      color: #FFFFFF; }
+
+#denglu_page {
+  padding: 0 1rem; }
+  #denglu_page .denlu_text {
+    display: block;
+    text-align: center;
+    padding-top: 0.5rem;
+    font-family: "微软雅黑";
+    color: #666666;
+    font-size: 1.5rem; }
+  #denglu_page p:nth-of-type(1) {
+    height: 20rem;
+    width: 100%;
+    background: #FFFFFF;
+    position: relative; }
+    #denglu_page p:nth-of-type(1) img {
+      height: 5rem;
+      position: absolute;
+      left: 50%;
+      margin-left: -2.5rem;
+      top: 50%; }
+  #denglu_page p:nth-of-type(2) {
+    padding: 1rem 0;
+    background: red;
+    font-size: 1.5rem; }
+    #denglu_page p:nth-of-type(2) a {
+      color: #FFFFFF;
+      display: inline-block;
+      width: 49%;
+      text-align: center; }
+    #denglu_page p:nth-of-type(2) a:nth-of-type(1) {
+      border-right: 0.1rem solid  #FFFFFF; }
+  #denglu_page p:nth-of-type(3) {
+    width: 100%;
+    text-align: center;
+    padding: 2rem 0;
+    color: #666666;
+    font-size: 1rem;
+    font-family: "微软雅黑"; }
+  #denglu_page p:nth-of-type(4) {
+    padding: 1rem 0rem;
+    text-align: center; }
+    #denglu_page p:nth-of-type(4) a {
+      width: 33%;
+      display: block;
+      float: left; }
+      #denglu_page p:nth-of-type(4) a span {
+        display: inline-block;
+        height: 3.5rem;
+        width: 3.5rem;
+        border: solid #DCDCDC 0.3rem;
+        border-radius: 50%;
+        line-height: 3.5rem;
+        background: #AAAAAA;
+        color: yellow;
+        font-size: 1.5rem; }
+    #denglu_page p:nth-of-type(4) a:nth-of-type(2) {
+      text-align: center; }
+
+#zuce_page_box .denlu_text {
+  display: block;
+  text-align: center;
+  font-family: "微软雅黑";
+  color: #666666;
+  font-size: 1.5rem;
+  padding-top: 0.5rem; }
+#zuce_page_box #zuce_page {
+  padding: 5rem 2rem; }
+  #zuce_page_box #zuce_page #number1 {
+    color: red; }
+  #zuce_page_box #zuce_page #number2 {
+    color: red; }
+  #zuce_page_box #zuce_page p {
+    padding-top: 1rem; }
+  #zuce_page_box #zuce_page p:nth-of-type(1) {
+    padding-bottom: 0.5rem;
+    border-bottom: solid 0.1rem #AAAAAA;
+    font-size: 1rem;
+    margin-bottom: 0.5rem; }
+    #zuce_page_box #zuce_page p:nth-of-type(1) span:nth-of-type(1) {
+      width: 29%; }
+  #zuce_page_box #zuce_page p:nth-of-type(2) {
+    padding-bottom: 0.5rem;
+    width: 76%;
+    border-bottom: solid 0.1rem #AAAAAA;
+    font-size: 1rem;
+    position: relative; }
+    #zuce_page_box #zuce_page p:nth-of-type(2) span:nth-of-type(1) {
+      width: 29%; }
+    #zuce_page_box #zuce_page p:nth-of-type(2) span:nth-of-type(2) {
+      position: absolute;
+      top: 1rem;
+      right: -5.5rem;
+      display: block;
+      height: 2rem;
+      width: 5.2rem;
+      background: #BBBBBB;
+      color: #FFFFFF;
+      line-height: 2rem;
+      text-align: center; }
+  #zuce_page_box #zuce_page p:nth-of-type(3) {
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    background: red;
+    color: #FFFFFF;
+    font-family: "微软雅黑";
+    margin-top: 1rem;
+    font-size: 1.5rem; }
+  #zuce_page_box #zuce_page p:nth-of-type(4) {
+    color: red;
+    text-align: center;
+    font-family: "微软雅黑"; }
+  #zuce_page_box #zuce_page input {
+    border: none;
+    background: none;
+    outline: none;
+    padding-left: 1%;
+    width: 70%; }
+
 footer {
   position: fixed;
   bottom: 0;
@@ -347,16 +491,16 @@ footer {
   padding-bottom: 0.2rem;
   background: #ffffff;
   z-index: 2; }
-  footer ul li {
+  footer div a {
     float: left;
     width: 20%;
     text-align: center;
     font-size: 1rem;
     color: #888888; }
-    footer ul li img {
+    footer div a img {
       width: 1.8rem;
       height: 2rem; }
-  footer ul li:nth-of-type(3) img {
+  footer div a:nth-of-type(3) img {
     height: 3rem;
     width: 3rem; }
 

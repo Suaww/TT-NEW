@@ -36,8 +36,11 @@
 		<!--渲染视图-->
 		<div ng-view='' class="view" id="view"></div>
 		<!--渲染视图-->
-		<footer>
-			<ul>
+		<footer ng-controller = 'mine_pageCtrl'>
+			<!--组件渲染视图-->
+			<footers></footers>
+			<!--组件渲染视图-->
+			<!--<ul>
 				<li>
 					<img  src="img/news_img.png"/>
 					<p>新闻</p>
@@ -55,9 +58,9 @@
 				</li>
 				<li>
 					<img  src="img/mine_img.png"/>
-					<p>新闻</p>
+					<p>我的</p>
 				</li>
-			</ul>
+			</ul>-->
 		</footer>
 	</body>
 	<script type="text/javascript" src="js/angular.js"></script>

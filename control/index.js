@@ -19,12 +19,24 @@ app.config(function($routeProvider) {
 		}).when('/detial_index/:id', {
 			controller: 'detial_indexCtrl',
 			templateUrl: 'view/detial_index.html'
+		}).when('/mine_page', {
+			controller: 'mine_pageCtrl',
+			templateUrl: 'view/mine_page.html'
+		}).when('/denglu_page', {
+			controller: 'denglu_pageCtrl',
+			templateUrl: 'view/denglu_page.html'
+		}).when('/phone_denlu_page', {
+			controller: 'phone_denlu_pageCtrl',
+			templateUrl: 'view/phone_denlu_page.html'
+		}).when('/phone_zuce_page', {
+			controller: 'phone_zuce_pageCtrl',
+			templateUrl: 'view/phone_zuce_page.html'
 		})
 		.otherwise({
 			redirectTo: '/index'
 		})
 });
-//导航页面控制器
+//---------------------------------------导航页面控制器
 app.controller('navCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 	$rootScope.menu = true;
 	$http.jsonp('http://127.0.0.1:8888/nav?&callback=JSON_CALLBACK').success(function(data) {
@@ -41,7 +53,7 @@ app.controller('navCtrl', ['$scope', '$http', '$rootScope', function($scope, $ht
 	//
 	//	}
 }]);
-//导航组件化
+//-------------------------------------导航组件化
 //组件的应用，在组件中操作DOM
 app.directive('navs', ['$location', function($location) {
 		return {
@@ -87,7 +99,7 @@ app.directive('navs', ['$location', function($location) {
 
 		}
 	}])
-	//首页新闻控制器
+	//------------------------------------首页新闻控制器
 app.controller('indexCtrl', ['$scope', '$http', function($scope, $http) {
 		alert('进入首页控制器');
 		$http.jsonp('http://127.0.0.1:8888/page01?&callback=JSON_CALLBACK').success(function(data) {
@@ -96,7 +108,7 @@ app.controller('indexCtrl', ['$scope', '$http', function($scope, $http) {
 			$scope.mesgs = data.datas;
 		})
 	}])
-	//最新页控制器，轮播图
+	//-----------------------------------最新页控制器，轮播图
 app.controller('page02Ctrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
 		$http.jsonp('http://127.0.0.1:8888/page02?&callback=JSON_CALLBACK').success(function(data) {
 				console.log('请求成功第二个页面');
@@ -118,7 +130,7 @@ app.controller('page02Ctrl', ['$scope', '$http', '$rootScope', function($scope, 
 			//控制菜单的显示隐藏
 			//swiper提供的js一定要写在这个控制器里
 	}])
-	//  最新页控制器,轮播下方列表部分
+	//------------------------------  最新页控制器,轮播下方列表部分
 app.controller('page02_detil_Ctrl', ['$scope', '$http', function($scope, $http) {
 	$http.jsonp('http://127.0.0.1:8888/page02_detil?&callback=JSON_CALLBACK').success(function(data) {
 		console.log('请求成功第二个页面的列表页');
@@ -127,7 +139,7 @@ app.controller('page02_detil_Ctrl', ['$scope', '$http', function($scope, $http) 
 	})
 }])
 
-//24H页面控制器
+//------------------------------------24H页面控制器
 app.controller('hoursCtrl', ["$scope", '$http', function($scope, $http) {
 		$http.jsonp('http://127.0.0.1:8888/hours?&callback=JSON_CALLBACK').success(function(data) {
 			console.log('请求成功第三个页面的列表页');
@@ -135,7 +147,7 @@ app.controller('hoursCtrl', ["$scope", '$http', function($scope, $http) {
 			$scope.mesgs = data.datas;
 		})
 	}])
-	//足球页面控制器
+	//----------------------------------足球页面控制器
 app.controller('footballCtrl', ["$scope", '$http', function($scope, $http) {
 		$http.jsonp('http://127.0.0.1:8888/football?&callback=JSON_CALLBACK').success(function(data) {
 			console.log('请求成功第四个页面的列表页');
@@ -143,7 +155,7 @@ app.controller('footballCtrl', ["$scope", '$http', function($scope, $http) {
 			$scope.mesgs = data.datas;
 		})
 	}])
-	//篮球页面控制器
+	//--------------------------------篮球页面控制器
 app.controller('basketballCtrl', ["$scope", '$http', function($scope, $http) {
 	$http.jsonp('http://127.0.0.1:8888/basketball?&callback=JSON_CALLBACK').success(function(data) {
 		console.log('请求成功第五个页面的列表页');
@@ -152,7 +164,7 @@ app.controller('basketballCtrl', ["$scope", '$http', function($scope, $http) {
 	})
 }])
 
-//首页详情页面控制器
+//-----------------------------首页详情页面控制器
 app.controller('detial_indexCtrl', ["$scope", "$routeParams", '$http', function($scope, $routeParams, $http) {
 	//	alert('进入详情页的控制器');
 	$http.jsonp('http://127.0.0.1:8888/page01?&callback=JSON_CALLBACK').success(function(data) {
@@ -168,3 +180,142 @@ app.controller('detial_indexCtrl', ["$scope", "$routeParams", '$http', function(
 		})
 	})
 }])
+//----------------------------------首页页尾部分组件
+app.directive('footers',function(){
+	return{
+		restrict: 'AECM',
+		repalce: true,
+		transclude: true,
+		template:'<div id="foot_box"><a href="#/index" class="nav_active"><img  src="img/news_img.png"/><p>新闻</p></a>'
+				+'<a><img  src="img/bisai_img.png"/><p>比赛</p></a>'
+				+'<a><img  src="img/aoyun_img.png"/></a>'
+				+'<a><img  src="img/faxian_img.png"/><p>发现</p></a>'
+				+'<a href="#/mine_page"><img  src="img/mine_img.png"/>'
+				+'<p>我的</p></a></div>',
+		link: function(scope, element, attrs) {
+			var foot_box = document.getElementById("foot_box");
+			var aAs = foot_box.getElementsByTagName('a');
+			angular.element(aAs).on('click',function(){
+				angular.element(aAs).removeClass('nav_active');
+				angular.element(this).addClass('nav_active');
+			})
+		}
+	}
+})
+//-----------------------个人中心页面控制器
+app.controller('mine_pageCtrl', ["$scope", '$http', function($scope, $http) {
+//	    alert('进入个人中心控制器');
+//		$http.jsonp('http://127.0.0.1:8888/hours?&callback=JSON_CALLBACK').success(function(data) {
+//			console.log('请求成功第三个页面的列表页');
+//			console.log(data.datas);
+//			$scope.mesgs = data.datas;
+//		})
+	}])
+
+//----------------------登录页面和注册页面控制器
+app.controller('denglu_pageCtrl', ["$scope", '$http', function($scope, $http) {
+//	    alert('进入登录页面控制器');
+	}])
+//----------------------登录页面控制器
+app.controller('phone_denlu_pageCtrl', ["$scope", '$http', function($scope, $http) {
+	    alert('进入手机登录页面控制器');
+	    var zuce_page = document.getElementById('zuce_page');
+		var oSpan1 = document.getElementById('number1');
+		var oSpan2 = document.getElementById('number2');
+		var aInput = zuce_page.getElementsByTagName('input');
+		var aP = zuce_page.getElementsByTagName('p');
+		$scope.pan = false;
+		$scope.onblur = function(){
+			var reg1 = /^1[0-9]{10}$/;
+			var val1 = angular.element(aInput[0]).val();
+			console.log(val1);
+			if(reg1.test(val1)){
+				angular.element(oSpan1).html('');
+			}else{
+				angular.element(oSpan1).html('请输入正确的手机号码！');
+			}
+		}
+		$scope.onblur2 = function(){
+			var reg2 =/^[a-zA-Z_][\w]{5,7}$/;
+			var reg3 = /^[\D]/;
+			var val2 = angular.element(aInput[1]).val();
+			var val2_head = val2.substr(0,1);
+			console.log(val2_head);
+			//判断密码格式
+			if(reg3.test(val2_head)&&reg2.test(val2)){
+				angular.element(oSpan2).html('');
+			}else if(!reg3.test(val2_head)){
+				angular.element(oSpan2).html('密码不能以数字开头!');
+			}else if(!reg2.test(val2_head)){
+				angular.element(oSpan2).html('密码要以6-8位的数字字母下划线组成!');
+			}
+		}
+		//提交代码事件
+		$scope.clickBtn = function(){
+			alert(angular.element(aInput[0]).val());
+			$scope.name = angular.element(aInput[0]).val();
+			$scope.password = angular.element(aInput[1]).val();
+			console.log($scope.name);
+			$http.get('./login.php', {
+					params: {
+						name: $scope.name,
+						//rsa加密
+						password: $scope.password,
+					}
+				}).success(function(data){
+					console.log(data);
+				})
+		}
+	}])
+//----------------------注册页面控制器
+app.controller('phone_zuce_pageCtrl', ["$scope", '$http', function($scope, $http) {
+//	    alert('进入手机注册页面控制器');
+		var zuce_page = document.getElementById('zuce_page');
+		var oSpan1 = document.getElementById('number1');
+		var oSpan2 = document.getElementById('number2');
+		var aInput = zuce_page.getElementsByTagName('input');
+		var aP = zuce_page.getElementsByTagName('p');
+		$scope.pan = false;
+		$scope.onblur = function(){
+			var reg1 = /^1[0-9]{10}$/;
+			var val1 = angular.element(aInput[0]).val();
+			console.log(val1);
+			if(reg1.test(val1)){
+				angular.element(oSpan1).html('');
+			}else{
+				angular.element(oSpan1).html('请输入正确的手机号码！');
+			}
+		}
+		$scope.onblur2 = function(){
+			var reg2 =/^[a-zA-Z_][\w]{5,7}$/;
+			var reg3 = /^[\D]/;
+			var val2 = angular.element(aInput[1]).val();
+			var val2_head = val2.substr(0,1);
+			console.log(val2_head);
+			//判断密码格式
+			if(reg3.test(val2_head)&&reg2.test(val2)){
+				angular.element(oSpan2).html('');
+			}else if(!reg3.test(val2_head)){
+				angular.element(oSpan2).html('密码不能以数字开头!');
+			}else if(!reg2.test(val2_head)){
+				angular.element(oSpan2).html('密码要以6-8位的数字字母下划线组成!');
+			}
+		}
+		//提交代码事件
+		$scope.clickBtn = function(){
+			alert(angular.element(aInput[0]).val());
+			$scope.name = angular.element(aInput[0]).val();
+			$scope.password = angular.element(aInput[1]).val();
+			console.log($scope.name);
+			$http.get('./register.php', {
+					params: {
+						name: $scope.name,
+						//rsa加密
+						password: $scope.password,
+					}
+				}).success(function(data){
+					console.log(data);
+				})
+		}
+		
+	}])

@@ -171,45 +171,45 @@ app.controller('page02_detil_Ctrl', ['$scope', '$http', '$rootScope', function($
 	})
 }])
 
-//====================定义一个下拉刷新的服务
-
-app.service('xiala', ['$scope', function($scope) {
-	return {
-		method: function(direct, callback) {
-
-			//获取元素
-			var hourBox = document.getElementById('refresh');
-			var body = document.getElementsByTagName('body')[0];
-			//获取滚动条滚动距离
-			var scrollTop = document.documentElement.scrollTo || document.body.scrollTop;
-			//当滚动条滚动距离小于0时监听滑动事件
-			var touchStarX;
-			var touchStarY;
-			if(scrollTop <= 0) {
-				body.addEventListener('touchstart', function(e) {
-					//				console.log(e.touches[0].pageX,e.touches[0].pageY);
-					touchStarX = e.touches[0].pageX;
-					touchStarY = e.touches[0].pageY;
-				})
-				body.addEventListener('touchmove', function(e) {
-					//				console.log(e.touches[0].pageX,e.touches[0].pageY);
-					var touchEndX = e.touches[0].pageX;
-					var touchEndY = e.touches[0].pageY;
-					//				angular.element(hourBox).css({
-					//					top:touchEndY-touchStarY,
-					//				});
-					hourBox.style.top = touchEndY - touchStarY;
-					console.log(hourBox.style.top);
-				})
-			}
-			//			$scope.$apply();
-
-		}
-	}
-}])
+////====================定义一个下拉刷新的服务
+//app.service('xiala', [function() {
+//	return {
+//		method: function(direct, callback) {
+//
+//			//获取元素
+//			var hourBox = document.getElementById('refresh');
+//			var body = document.getElementsByTagName('body')[0];
+//			//获取滚动条滚动距离
+//			var scrollTop = document.documentElement.scrollTo || document.body.scrollTop;
+//			//当滚动条滚动距离小于0时监听滑动事件
+//			var touchStarX;
+//			var touchStarY;
+//			if(scrollTop <= 0) {
+//				body.addEventListener('touchstart', function(e) {
+//					//				console.log(e.touches[0].pageX,e.touches[0].pageY);
+//					touchStarX = e.touches[0].pageX;
+//					touchStarY = e.touches[0].pageY;
+//				})
+//				body.addEventListener('touchmove', function(e) {
+//					//				console.log(e.touches[0].pageX,e.touches[0].pageY);
+//					var touchEndX = e.touches[0].pageX;
+//					var touchEndY = e.touches[0].pageY;
+//					//				angular.element(hourBox).css({
+//					//					top:touchEndY-touchStarY,
+//					//				});
+//					hourBox.style.top = touchEndY - touchStarY;
+//					console.log(hourBox.style.top);
+//				})
+//			}
+//			//			$scope.$apply();
+//
+//		}
+//	}
+//}])
+//====================定义一个下拉刷新的服务结束
 
 //------------------------------------24H页面控制器（下拉刷新）
-app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", 'xiala', function($scope, $http, $rootScope, xiala) {
+app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", function($scope, $http, $rootScope) {
 	//加载中
 	$rootScope.loading = true;
 	$http.jsonp('http://127.0.0.1:8888/hours?&callback=JSON_CALLBACK').success(function(data) {
@@ -220,7 +220,9 @@ app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", 'xiala', function(
 			$rootScope.loading = false;
 		})
 		//========下拉刷新========
-	xiala.method('refresh', 'body');
+//		$scope.$apply();
+//	xiala.method('refresh', 'body');
+	
 }])
 
 //----------------------------------足球页面控制器

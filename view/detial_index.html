@@ -9,7 +9,7 @@
 				<span>{{mesgs.list.newstime|date:'MM:dd h:mm'}}</span>
 				<span>{{mesgs.list.columns}}</span>
 			</p>
-			<p class="author">
+			<p class="author" ng-hide='loading'>
 				<img src="{{mesgs.list.authorHeadImage}}"/><span>{{mesgs.list.authorName}} </span>{{mesgs.list.autohrDescription}}<span></span>
 			</p>
 		</div>

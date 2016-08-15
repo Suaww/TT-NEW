@@ -214,6 +214,12 @@ section {
   top: 0;
   width: 100%;
   padding-top: 7rem; }
+  .refresh #shuaXin {
+    width: 100%;
+    text-align: center;
+    height: 2rem;
+    line-height: 2rem;
+    display: none; }
 
 #hours {
   height: 96%;

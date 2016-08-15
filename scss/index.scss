@@ -257,13 +257,22 @@ section {
     }
 }
 /*第三个路由页面开始*/
+//下拉刷新的样式
 .refresh{
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     padding-top: 7rem;
+    #shuaXin{
+        width: 100%;
+        text-align: center;
+        height: 2rem;
+        line-height: 2rem;
+        display: none;
+    }
 }
+//下拉刷新的样式
 #hours {
     height: 96%;
     padding-top: 4%;

@@ -56,51 +56,52 @@ app.controller('navCtrl', ['$scope', '$http', '$rootScope', function($scope, $ht
 //-------------------------------------导航组件化
 //组件的应用，在组件中操作DOM
 app.directive('navs', ['$location', function($location) {
-		return {
-			restrict: 'AECM',
-			repalce: true,
-			transclude: true,
-			template: '<a href="#/index" class="nav_active">{{mesgs[0].name}}</a>' +
-				'<a href="#/zuixin">{{mesgs[1].name}}</a>' +
-				'<a href="#/hours">{{mesgs[2].name}}</a>' +
-				'<a href="#/football">{{mesgs[3].name}}</a>' +
-				'<a href="#/basketball">{{mesgs[4].name}}</a>',
-			link: function(scope, element, attrs) {
-				var oBox = document.getElementById('a_box');
-				var aAs = oBox.getElementsByTagName('a');
-				//console.log(location.hash);
-				switch(location.hash) {
-					case "#/index":
-						angular.element(aAs).removeClass('nav_active');
-						angular.element(aAs[0]).addClass('nav_active');
-						break;
-					case "#/zuixin":
-						angular.element(aAs).removeClass('nav_active');
-						angular.element(aAs[1]).addClass('nav_active');
-						break;
-					case "#/hours":
-						angular.element(aAs).removeClass('nav_active');
-						angular.element(aAs[2]).addClass('nav_active');
-						break;
-					case "#/football":
-						angular.element(aAs).removeClass('nav_active');
-						angular.element(aAs[3]).addClass('nav_active');
-						break;
-					case "#/basketball":
-						angular.element(aAs).removeClass('nav_active');
-						angular.element(aAs[4]).addClass('nav_active');
-						break;
-				}
-				angular.element(aAs).on('click', function(e) {
+	return {
+		restrict: 'AECM',
+		repalce: true,
+		transclude: true,
+		template: '<a href="#/index" class="nav_active">{{mesgs[0].name}}</a>' +
+			'<a href="#/zuixin">{{mesgs[1].name}}</a>' +
+			'<a href="#/hours">{{mesgs[2].name}}</a>' +
+			'<a href="#/football">{{mesgs[3].name}}</a>' +
+			'<a href="#/basketball">{{mesgs[4].name}}</a>',
+		link: function(scope, element, attrs) {
+			var oBox = document.getElementById('a_box');
+			var aAs = oBox.getElementsByTagName('a');
+			//console.log(location.hash);
+			switch(location.hash) {
+				case "#/index":
 					angular.element(aAs).removeClass('nav_active');
-					angular.element(this).addClass('nav_active');
-				});
+					angular.element(aAs[0]).addClass('nav_active');
+					break;
+				case "#/zuixin":
+					angular.element(aAs).removeClass('nav_active');
+					angular.element(aAs[1]).addClass('nav_active');
+					break;
+				case "#/hours":
+					angular.element(aAs).removeClass('nav_active');
+					angular.element(aAs[2]).addClass('nav_active');
+					break;
+				case "#/football":
+					angular.element(aAs).removeClass('nav_active');
+					angular.element(aAs[3]).addClass('nav_active');
+					break;
+				case "#/basketball":
+					angular.element(aAs).removeClass('nav_active');
+					angular.element(aAs[4]).addClass('nav_active');
+					break;
 			}
-
+			angular.element(aAs).on('click', function(e) {
+				angular.element(aAs).removeClass('nav_active');
+				angular.element(this).addClass('nav_active');
+			});
 		}
-	}])
-	//------------------------------------首页新闻控制器
-app.controller('indexCtrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
+
+	}
+}])
+
+//------------------------------------首页新闻控制器
+app.controller('indexCtrl', ['$scope', '$http', '$rootScope', 'shuaxin', function($scope, $http, $rootScope, shuaxin) {
 		//		alert('进入首页控制器');
 		//加载中
 		$rootScope.loading = true;
@@ -110,27 +111,29 @@ app.controller('indexCtrl', ['$scope', '$http', '$rootScope', function($scope, $
 		var loadMore = document.getElementById('loadMore');
 		//请求封装
 		var requst = function() {
-			$scope.step += 5;
-			$http.jsonp('http://127.0.0.1:8888/page01?&callback=JSON_CALLBACK').success(function(data) {
-				console.log('请求成功');
-				console.log(data.datas);
-				if($scope.step > data.datas.length) {
-					loadMore.innerHTML = '没有更多了';
-					return;
-				}
-				//对请求回来的数据进行拆分
-				$scope.mesgs = data.datas.slice(0, $scope.step)
-					//加载中完成
-				$rootScope.loading = false;
-				loadMore.innerHTML = '加载更多...';
-			})
-		}
+				$scope.step += 5;
+				$http.jsonp('http://127.0.0.1:8888/page01?&callback=JSON_CALLBACK').success(function(data) {
+					console.log('请求成功');
+					console.log(data.datas);
+					if($scope.step > data.datas.length) {
+						loadMore.innerHTML = '没有更多了';
+						return;
+					}
+					//对请求回来的数据进行拆分
+					$scope.mesgs = data.datas.slice(0, $scope.step)
+						//加载中完成
+					$rootScope.loading = false;
+					loadMore.innerHTML = '加载更多...';
+				})
+			}
+			//请求封装
 		requst();
 		//点击加载更多
 		$scope.clickMore = function() {
-			requst();
-			loadMore.innerHTML = '正在加载...';
-		}
+				requst();
+				loadMore.innerHTML = '正在加载...';
+			}
+			//====================下拉刷新服务引用
 	}])
 	//-----------------------------------最新页控制器，轮播图
 app.controller('page02Ctrl', ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
@@ -172,57 +175,91 @@ app.controller('page02_detil_Ctrl', ['$scope', '$http', '$rootScope', function($
 }])
 
 ////====================定义一个下拉刷新的服务
-//app.service('xiala', [function() {
-//	return {
-//		method: function(direct, callback) {
-//
-//			//获取元素
-//			var hourBox = document.getElementById('refresh');
-//			var body = document.getElementsByTagName('body')[0];
-//			//获取滚动条滚动距离
-//			var scrollTop = document.documentElement.scrollTo || document.body.scrollTop;
-//			//当滚动条滚动距离小于0时监听滑动事件
-//			var touchStarX;
-//			var touchStarY;
-//			if(scrollTop <= 0) {
-//				body.addEventListener('touchstart', function(e) {
-//					//				console.log(e.touches[0].pageX,e.touches[0].pageY);
-//					touchStarX = e.touches[0].pageX;
-//					touchStarY = e.touches[0].pageY;
-//				})
-//				body.addEventListener('touchmove', function(e) {
-//					//				console.log(e.touches[0].pageX,e.touches[0].pageY);
-//					var touchEndX = e.touches[0].pageX;
-//					var touchEndY = e.touches[0].pageY;
-//					//				angular.element(hourBox).css({
-//					//					top:touchEndY-touchStarY,
-//					//				});
-//					hourBox.style.top = touchEndY - touchStarY;
-//					console.log(hourBox.style.top);
-//				})
-//			}
-//			//			$scope.$apply();
-//
-//		}
-//	}
-//}])
-//====================定义一个下拉刷新的服务结束
+app.service('shuaxin', ['$http', function($http) {
+		return {
+			method: function(mesgs) {}
+		}
+	}])
+	//====================定义一个下拉刷新的服务结束
 
 //------------------------------------24H页面控制器（下拉刷新）
-app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", function($scope, $http, $rootScope) {
+app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", 'shuaxin', function($scope, $http, $rootScope, shuaxin) {
 	//加载中
 	$rootScope.loading = true;
+	//进入路由进行初次请求
+	var shuaXinText = document.getElementById('shuaXin');
 	$http.jsonp('http://127.0.0.1:8888/hours?&callback=JSON_CALLBACK').success(function(data) {
-			console.log('请求成功第三个页面的列表页');
-			console.log(data.datas);
-			$scope.mesgs = data.datas;
-			//加载完成
-			$rootScope.loading = false;
-		})
+		console.log('请求成功第三个页面的列表页');
+		console.log(data.datas);
+		$scope.mesgs = data.datas;
+		//加载完成
+		$rootScope.loading = false;
 		//========下拉刷新========
-//		$scope.$apply();
-//	xiala.method('refresh', 'body');
+		//		$scope.$apply();
+
+		//获取元素
+		var hourBox = document.getElementById('refresh');
+		var body = document.getElementsByTagName('body')[0];
+		var big_box_hours = document.getElementById('big_box_hours');
+		var shuaXin = document.getElementById('shuaXin');
+		//当滚动条滚动距离小于0时监听滑动事件
+		var touchStarX;
+		var touchStarY;
+		var scrollTop;
+		//封装touchStar事件，以便移除（结束）
+		var fn03 = function(e) {
+				//再次获取获取滚动条滚动距离
+				scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+				console.log(scrollTop);
+				touchStarX = e.touches[0].pageX;
+				touchStarY = e.touches[0].pageY;
+				console.log(touchStarY);
+				//判断滚动条的位置，在顶部的时候给给body添加touchmove事件
+				if(scrollTop <= 0 && touchStarY > 70) {
+					console.log(scrollTop);
+					//给body添加touchmove事件
+					body.addEventListener('touchmove', fn01);
+				}
+				//给body添加touchend事件
+				body.addEventListener('touchend', fn02);
+			}
+		//给Body添加touchstar事件		
+			body.addEventListener('touchstart', fn03);
+			//封装touchmove事件，以便移除（开始）
+		var fn01 = function(e) {
+				touchingX = e.touches[0].pageX;
+				touchingY = e.touches[0].pageY;
+				if((touchingY - touchStarY) > 0) {
+					shuaXin.style.display = 'block'
+					hourBox.style.top = touchingY - touchStarY + 'px';
+				} else {
+					return;
+				}
+			}
+			//封装touchend事件，以便移除（结束）
+		var fn02 = function() {
+					if(scrollTop <= 0 && touchStarY > 70){
+						shuaXin.innerHTML = '刷新中...'
+						hourBox.style.top = 0;
+						//发送请求开始
+						$http.jsonp('http://127.0.0.1:8888/hours?&callback=JSON_CALLBACK').success(function(data) {
+								console.log('请求成功第三个页面的列表页');
+								console.log(data.datas);
+								shuaXin.style.display = 'none';
+								$scope.mesgs = data.datas;
+								shuaXin.innerHTML = '松开马上刷新'
+								//加载完成
+								body.removeEventListener('touchend', fn02);
+							})
+							//发送请求结束
 	
+						//移除touchmove事件
+						body.removeEventListener('touchmove', fn01);
+					}
+					
+			}
+	})
+
 }])
 
 //----------------------------------足球页面控制器

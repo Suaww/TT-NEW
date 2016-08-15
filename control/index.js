@@ -214,17 +214,17 @@ app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", 'shuaxin', functio
 				touchStarX = e.touches[0].pageX;
 				touchStarY = e.touches[0].pageY;
 				console.log(touchStarY);
-				//判断滚动条的位置，在顶部的时候给给body添加touchmove事件
+				//判断滚动条的位置，在顶部的时候给给hourBox添加touchmove事件
 				if(scrollTop <= 0 && touchStarY > 70) {
 					console.log(scrollTop);
-					//给body添加touchmove事件
-					body.addEventListener('touchmove', fn01);
+					//给hourBox添加touchmove事件
+					hourBox.addEventListener('touchmove', fn01);
 				}
-				//给body添加touchend事件
-				body.addEventListener('touchend', fn02);
+				//给hourBox添加touchend事件
+				hourBox.addEventListener('touchend', fn02);
 			}
-		//给Body添加touchstar事件		
-			body.addEventListener('touchstart', fn03);
+		//给hourBox添加touchstar事件		
+			hourBox.addEventListener('touchstart', fn03);
 			//封装touchmove事件，以便移除（开始）
 		var fn01 = function(e) {
 				touchingX = e.touches[0].pageX;
@@ -249,12 +249,12 @@ app.controller('hoursCtrl', ["$scope", '$http', "$rootScope", 'shuaxin', functio
 								$scope.mesgs = data.datas;
 								shuaXin.innerHTML = '松开马上刷新'
 								//加载完成
-								body.removeEventListener('touchend', fn02);
+								hourBox.removeEventListener('touchend', fn02);
 							})
 							//发送请求结束
 	
 						//移除touchmove事件
-						body.removeEventListener('touchmove', fn01);
+						hourBox.removeEventListener('touchmove', fn01);
 					}
 					
 			}
